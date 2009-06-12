@@ -1578,7 +1578,12 @@ int Fighter::onFloor() {
 bool Fighter::checkFloorCollision() {
 	double centerx = x + rightside/2.0;
 	double bottomy = y + bottomside;
-	if (onFloor()!=-1) return true;
+	if (onFloor()!=-1) {
+		dy = DI = fastfall = ymomentum = 0;
+		airdodgecount = 0;
+		jumpcount = 0;
+		return true;
+	}
 	vector<Floor> floors = stage->getFloors();
 	for(uint8 n = 0; n < floors.size(); n++) {
 		Floor currfloor = floors[n];
