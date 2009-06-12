@@ -1576,10 +1576,26 @@ int Fighter::onFloor() {
 	return -1;
 }
 bool Fighter::checkFloorCollision() {
+	double centerx = x + rightside/2.0;
+	double bottomy = y + bottomside;
+	if (onFloor()!=-1) return true;
 	vector<Floor> floors = stage->getFloors();
 	for(uint8 n = 0; n < floors.size(); n++) {
 		Floor currfloor = floors[n];
-		if(!isCPU) {
+		double slope = currfloor.rise*1.0/currfloor.width;
+		bool isabovefloornow = (centerx > currfloor.x && centerx<currfloor.x+currfloor.length)&&(bottomy<currfloor.y+centerx*slope);
+		bool isabovefloorafterdx = (centerx + dx > currfloor.x && centerx+dx<currfloor.x+currfloor.length)&&(bottomy<currfloor.y+(centerx+dx)*slope);
+		if ( isabovefloornow|| isabovefloorafterdx ) {
+			bool isbelowfloorafterdy = (centerx + dx > currfloor.x && centerx+dx<currfloor.x+currfloor.length)&&(bottomy+dy>currfloor.y+(centerx+dx)*slope);
+			if(isbelowfloorafterdy){
+				y=onfloor;
+				dy = DI = fastfall = ymomentum = 0;
+				airdodgecount = 0;
+				jumpcount = 0;
+				return true;
+			}
+		}
+		/*if(!isCPU) {
 			if(aerial) {
 				if(!(Pad.Held.Down && currfloor.isPlatform()) && dy+ymomentum+gravity > 0 && y+bottomside-rise <= currfloor.y && y+bottomside-rise + gravity + fastfall + dy + ymomentum > currfloor.y && x+rightside + dx + DI > currfloor.x && x+leftside + dx + DI < currfloor.x + currfloor.length) {
 					aerial = false;
@@ -1622,7 +1638,7 @@ bool Fighter::checkFloorCollision() {
 					} // stays on the ledge
 				}
 			}
-		}
+		}*/
 	}
 	return false;
 }
