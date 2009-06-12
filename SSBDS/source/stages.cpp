@@ -21,7 +21,7 @@ void FinalDestination::Initialize() {
 	spawny.push_back(256/3 -32);
 	spawny.push_back(256/3 -32);
 	spawny.push_back(256/3 -32);
-	floors.push_back(Floor(64, 132, 512-64-64, false));
+	floors.push_back(Floor(64, 132, 512-64-64, 0, false));
 	walls.push_back(Wall(96, 132, 248-132, "left"));
 	walls.push_back(Wall(512-96, 132, 248-132, "right"));
 	ceilings.push_back(Ceiling(64, 132, 512-64-64));
@@ -52,9 +52,9 @@ void PokemonStadium::Initialize() {
 	spawny.push_back(256/3 -64);
 	spawny.push_back(256/3 -64);
 	spawny.push_back(256/3 -64);
-	floors.push_back(Floor(42, 154, 512-42-42, false));
-	floors.push_back(Floor(128, 110, 190-128, true));
-	floors.push_back(Floor(324, 110, 386-324, true));
+	floors.push_back(Floor(42, 154, 512-42-42, 0, false));
+	floors.push_back(Floor(128, 110, 190-128, 0, true));
+	floors.push_back(Floor(324, 110, 386-324, 0, true));
 	walls.push_back(Wall(50, 154, 216-154, "left"));
 	walls.push_back(Wall(512-50, 154, 216-154, "right"));
 	ceilings.push_back(Ceiling(42, 216, 512-42-42));
@@ -88,19 +88,19 @@ void CastleSiege::Initialize() {
 	spawny.push_back(384/3 -64);
 	spawny.push_back(384/3 -64);
 	spawny.push_back(384/3 -64);
-	floors.push_back(Floor(40, 344-128, 450-40, false));
-	for(int n = 40; n < 202; n++) {
-		floors[0].slopes.push_back(0);
-	}
-	for(int n = 202; n < 300; n++) {
-		floors[0].slopes.push_back(-.25);
-	}
-	for(int n = 300; n < 451; n++) {
-		floors[0].slopes.push_back(0);
-	}
+	floors.push_back(Floor(40, 344-128, 450-40, 0, false));
+	//for(int n = 40; n < 202; n++) {
+	//	floors[0].slopes.push_back(0);
+	//}
+	//for(int n = 202; n < 300; n++) {
+	//	floors[0].slopes.push_back(-.25);
+	//}
+	//for(int n = 300; n < 451; n++) {
+	//	floors[0].slopes.push_back(0);
+	//}
 	// this floor is sloped
-	floors.push_back(Floor(84, 288-128, 194-84, true));
-	floors.push_back(Floor(302, 270-128, 408-302, true));
+	floors.push_back(Floor(84, 288-128, 194-84, 0, true));
+	floors.push_back(Floor(302, 270-128, 408-302, 0, true));
 	walls.push_back(Wall(48, 350-128, 100, "left"));
 	walls.push_back(Wall(442, 350-128, 100, "right"));
 	songnames.push_back("Ike's Theme");
@@ -127,33 +127,33 @@ void Corneria::Initialize() {
 	spawny.push_back(256/3 -96);
 	spawny.push_back(256/3 -96);
 	spawny.push_back(256/3 -96);
-	floors.push_back(Floor(106, 386-256, 140-106, false));			
-	floors.push_back(Floor(30, 330-256, 368-30, false));
-	for(int n = 30; n < 90; n++) {
-		floors[1].slopes.push_back(-.25);
-	}
-	for(int n = 90; n < 214; n++) {
-		floors[1].slopes.push_back(.10);
-	}
-	for(int n = 214; n < 260; n++) {
-		floors[1].slopes.push_back(-.21);
-	}
-	for(int n = 260; n < 295; n++) {
-		floors[1].slopes.push_back(-.8);
-	}
-	for(int n = 295; n < 369; n++) {
-		floors[1].slopes.push_back(-.4);
-	}
-	floors.push_back(Floor(362, 341-256, 484-362, false));
-	for(int n = 362; n < 408; n++) {
-		floors[2].slopes.push_back(0);
-	}
-	for(int n = 408; n < 441; n++) {
-		floors[2].slopes.push_back(-.2);
-	}
-	for(int n = 441; n < 485; n++) {
-		floors[2].slopes.push_back(.38);
-	}
+	floors.push_back(Floor(106, 386-256, 140-106, 0, false));			
+	floors.push_back(Floor(30, 330-256, 368-30, 0, false));
+	//for(int n = 30; n < 90; n++) {
+	//	floors[1].slopes.push_back(-.25);
+	//}
+	//for(int n = 90; n < 214; n++) {
+	//	floors[1].slopes.push_back(.10);
+	//}
+	//for(int n = 214; n < 260; n++) {
+	//	floors[1].slopes.push_back(-.21);
+	//}
+	//for(int n = 260; n < 295; n++) {
+	//	floors[1].slopes.push_back(-.8);
+	//}
+	//for(int n = 295; n < 369; n++) {
+	//	floors[1].slopes.push_back(-.4);
+	//}
+	floors.push_back(Floor(362, 341-256, 484-362, 0, false));
+	//for(int n = 362; n < 408; n++) {
+	//	floors[2].slopes.push_back(0);
+	//}
+	//for(int n = 408; n < 441; n++) {
+	//	floors[2].slopes.push_back(-.2);
+	//}
+	//for(int n = 441; n < 485; n++) {
+	//	floors[2].slopes.push_back(.38);
+	//}
 	// 2 floors are sloped
 	songnames.push_back("Main Theme");
 	songnames.push_back("Fortuna");
