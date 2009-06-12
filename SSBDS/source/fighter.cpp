@@ -1568,7 +1568,7 @@ int Fighter::onFloor() {
 	vector<Floor> floors = stage->getFloors();
 	for(uint8 n = 0; n < floors.size(); n++) {
 		Floor currfloor = floors[n];
-		double slope = currfloor.rise*1.0/currfloor.width;
+		double slope = currfloor.rise*1.0/currfloor.length;
 		if ((currfloor.y+centerx*slope-bottomy)<1){
 			return n;
 		}
@@ -1582,7 +1582,7 @@ bool Fighter::checkFloorCollision() {
 	vector<Floor> floors = stage->getFloors();
 	for(uint8 n = 0; n < floors.size(); n++) {
 		Floor currfloor = floors[n];
-		double slope = currfloor.rise*1.0/currfloor.width;
+		double slope = currfloor.rise*1.0/currfloor.length;
 		bool isabovefloornow = (centerx > currfloor.x && centerx<currfloor.x+currfloor.length)&&(bottomy<currfloor.y+centerx*slope);
 		bool isabovefloorafterdx = (centerx + dx > currfloor.x && centerx+dx<currfloor.x+currfloor.length)&&(bottomy<currfloor.y+(centerx+dx)*slope);
 		if ( isabovefloornow|| isabovefloorafterdx ) {
