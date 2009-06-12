@@ -1588,7 +1588,7 @@ bool Fighter::checkFloorCollision() {
 		if ( isabovefloornow|| isabovefloorafterdx ) {
 			bool isbelowfloorafterdy = (centerx + dx > currfloor.x && centerx+dx<currfloor.x+currfloor.length)&&(bottomy+dy>currfloor.y+(centerx+dx)*slope);
 			if(isbelowfloorafterdy){
-				y=onfloor;
+				y=currfloor.y+centerx*slope-bottomside;
 				dy = DI = fastfall = ymomentum = 0;
 				airdodgecount = 0;
 				jumpcount = 0;
