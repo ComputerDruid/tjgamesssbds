@@ -1581,6 +1581,7 @@ bool Fighter::checkFloorCollision() {
 	if (onFloor()!=-1) {
 		dy = DI = fastfall = ymomentum = 0;
 		airdodgecount = 0;
+		aerial = false;
 		jumpcount = 0;
 		return true;
 	}
@@ -1596,6 +1597,7 @@ bool Fighter::checkFloorCollision() {
 				y=currfloor.y+centerx*slope-bottomside-0.5;
 				dy = DI = fastfall = ymomentum = 0;
 				airdodgecount = 0;
+				aerial = false;
 				jumpcount = 0;
 				return true;
 			}
