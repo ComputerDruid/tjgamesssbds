@@ -1576,6 +1576,7 @@ int Fighter::onFloor() {
 	return -1;
 }
 bool Fighter::checkFloorCollision() {
+	if (dy<0) return;
 	double centerx = x + rightside/2.0;
 	double bottomy = y + bottomside;
 	if (onFloor()!=-1) {
