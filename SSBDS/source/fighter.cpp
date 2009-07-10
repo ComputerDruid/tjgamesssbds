@@ -1569,7 +1569,7 @@ int Fighter::onFloor() {
 	for(uint8 n = 0; n < floors.size(); n++) {
 		Floor currfloor = floors[n];
 		double slope = currfloor.rise*1.0/currfloor.length;
-		if ((centerx > currfloor.x && centerx<currfloor.x+currfloor.length)&&abs(currfloor.y+centerx*slope-bottomy)<1){
+		if ((centerx > currfloor.x && centerx<currfloor.x+currfloor.length)&&fabs(currfloor.y+centerx*slope-bottomy)<1){
 			return n;
 		}
 	}
