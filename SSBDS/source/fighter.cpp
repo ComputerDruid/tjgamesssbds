@@ -1569,7 +1569,7 @@ int Fighter::onFloor() {
 	for(uint8 n = 0; n < floors.size(); n++) {
 		Floor currfloor = floors[n];
 		double slope = currfloor.rise*1.0/currfloor.length;
-		if ((centerx > currfloor.x && centerx<currfloor.x+currfloor.length)&&fabs(currfloor.y+centerx*slope-bottomy)<1){
+		if ((centerx > currfloor.x && centerx<currfloor.x+currfloor.length)&&fabs(currfloor.y+(centerx-currfloor.x)*slope-bottomy)<1){
 			return n;
 		}
 	}
@@ -1591,12 +1591,12 @@ bool Fighter::checkFloorCollision() {
 	for(uint8 n = 0; n < floors.size(); n++) {
 		Floor currfloor = floors[n];
 		double slope = currfloor.rise*1.0/currfloor.length;
-		bool isabovefloornow = (centerx > currfloor.x && centerx<currfloor.x+currfloor.length)&&(bottomy<currfloor.y+centerx*slope);
-		bool isabovefloorafterdx = (centerx + dx > currfloor.x && centerx+dx<currfloor.x+currfloor.length)&&(bottomy<currfloor.y+(centerx+dx)*slope);
+		bool isabovefloornow = (centerx > currfloor.x && centerx<currfloor.x+currfloor.length)&&(bottomy<currfloor.y+(centerx-currfloor.x)*slope);
+		bool isabovefloorafterdx = (centerx + dx > currfloor.x && centerx+dx<currfloor.x+currfloor.length)&&(bottomy<currfloor.y+(centerx+dx-currfloor.x)*slope);
 		if ( isabovefloornow|| isabovefloorafterdx ) {
-			bool isbelowfloorafterdy = (centerx + dx > currfloor.x && centerx+dx<currfloor.x+currfloor.length)&&(bottomy+dy>currfloor.y+(centerx+dx)*slope);
+			bool isbelowfloorafterdy = (centerx + dx > currfloor.x && centerx+dx<currfloor.x+currfloor.length)&&(bottomy+dy>currfloor.y+(centerx+dx-currfloor.x)*slope);
 			if(isbelowfloorafterdy){
-				y=currfloor.y+centerx*slope-bottomside-0.5;
+				y=currfloor.y+(centerx+dx-currfloor.x)*slope-bottomside-0.5;
 				DI = fastfall = ymomentum = 0;
 				if (dy>0) dy=0;
 				airdodgecount = 0;
