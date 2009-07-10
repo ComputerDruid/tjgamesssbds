@@ -1579,6 +1579,7 @@ bool Fighter::checkFloorCollision() {
 	if (dy<0) return false;
 	double centerx = x + rightside/2.0;
 	double bottomy = y + bottomside;
+	double py = bottomy+dy+gravity+ymomentum;
 	if (onFloor()!=-1) {
 		DI = fastfall = ymomentum = 0;
 		if (dy>0) dy=0;
@@ -1594,7 +1595,7 @@ bool Fighter::checkFloorCollision() {
 		bool isabovefloornow = (centerx > currfloor.x && centerx<currfloor.x+currfloor.length)&&(bottomy<currfloor.y+(centerx-currfloor.x)*slope);
 		bool isabovefloorafterdx = (centerx + dx > currfloor.x && centerx+dx<currfloor.x+currfloor.length)&&(bottomy<currfloor.y+(centerx+dx-currfloor.x)*slope);
 		if ( isabovefloornow|| isabovefloorafterdx ) {
-			bool isbelowfloorafterdy = (centerx + dx > currfloor.x && centerx+dx<currfloor.x+currfloor.length)&&(bottomy+dy>currfloor.y+(centerx+dx-currfloor.x)*slope);
+			bool isbelowfloorafterdy = (centerx + dx > currfloor.x && centerx+dx<currfloor.x+currfloor.length)&&(py>currfloor.y+(centerx+dx-currfloor.x)*slope);
 			if(isbelowfloorafterdy){
 				y=currfloor.y+(centerx+dx-currfloor.x)*slope-bottomside-0.5;
 				DI = fastfall = ymomentum = 0;
