@@ -88,13 +88,15 @@ void CastleSiege::Initialize() {
 	spawny.push_back(384/3 -64);
 	spawny.push_back(384/3 -64);
 	spawny.push_back(384/3 -64);
-	floors.push_back(Floor(40, 344-128, 450-40, 0, false));
+	floors.push_back(Floor(40, 344-128, 200-40, 0, false));
 	//for(int n = 40; n < 202; n++) {
 	//	floors[0].slopes.push_back(0);
 	//}
 	//for(int n = 202; n < 300; n++) {
 	//	floors[0].slopes.push_back(-.25);
 	//}
+	floors.push_back(Floor(200, 344-128, 300-200, -25, false));
+	floors.push_back(Floor(300, 319-128, 450-300, 0, false));
 	//for(int n = 300; n < 451; n++) {
 	//	floors[0].slopes.push_back(0);
 	//}
